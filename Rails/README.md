@@ -45,3 +45,52 @@ Ahora debemos dar permisos a nuestro directorio para ello vamos al directorio en
   sudo chown -R $USER:$USER .
 ```
 
+Ahora descargamos el script de "entrypoint.sh" y lo agregamos en el directorio del proyecto, nos debemos asegurar que dicho archivo tenga permisos de escritura lectura y execucion.
+
+```bash
+  sudo chmod 775 entrypoint.sh
+```
+
+Ahora descargamos los archivos Dockerfile, docker-compose.yml y el env-example a nuestro directorio raiz del proyecto.
+
+Despues cambiamos el nombre del env-example a env y seteamos un password para la base de datos de postgres, al igual que en archivo docker-compose estos password deben coincidir.
+
+Si deseas puedes agregar estas gemas a tu Gemfile:
+
+```bash
+  foreman
+  sidekiq
+  redis
+```
+
+Construimos la app con sus dependencias:
+
+```bash
+  docker-compose build web
+```
+
+Creamos la base de datos con Rails:
+
+```bash
+  docker-compose run --rm web rails db:create
+```
+
+Corremos el servidor:
+
+```bash
+  docker compose up
+```
+
+El puerto predefinido es el 3000 pero lo puedes modificar en el Dockerfile y en el docker-compose.yml
+
+Cada vez que se quiera correr un comando propio de rails se debe hacer con estos prefijos:
+
+```bash
+  docker-compose run --rm web rails
+```
+
+Por ejemplo cuando se genera un controlador:
+
+```bash
+  docker-compose run --rm web rails g controller Pages index users
+```
