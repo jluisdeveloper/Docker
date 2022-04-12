@@ -6,7 +6,7 @@ Si se tiene alguna version de docker abandonada la removemos.
   sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
 
-Instalamos los paquetes necesario.
+Instalamos los paquetes necesarios.
 ```bash
   sudo apt-get update
   sudo apt-get install \
@@ -16,7 +16,7 @@ Instalamos los paquetes necesario.
     lsb-release
 ```
 
-Agregamos el repositorio oficial
+Agregamos el repositorio oficial.
 ```bash
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
@@ -27,23 +27,32 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-Actualizamos los repositorios
+Actualizamos los repositorios.
 ```bash
-sudo apt  update
+sudo apt update
 ```
 
-Instalamos los paquetes
+Instalamos los paquetes.
 ```bash
 sudo apt install docker-ce docker-ce-cli containerd.io
 ```
 ## Instalar Docker-compose
 
-Descargamos el archivo binario
+Descargamos el archivo binario.
 ```bash
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
-Se le da permisos a la descarga
+Se le da permisos a la descarga.
 ```bash
 sudo chmod +x /usr/local/bin/docker-compose
+```
+Ahora se debe verificar la instalacion:
+
+```bash
+docker --version
+```
+
+```bash
+docker-compose --version
 ```
