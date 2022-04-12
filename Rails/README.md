@@ -14,3 +14,34 @@ El comando que se va a ejecutar seria sh, o tambien se puede usar bash pero por 
   docker run -it --rm -v ${PWD}:/usr/src/app ruby:3.1 /bin/sh
 ```
 
+Una vez dentro del contenedor ya podemos interactuar, por lo tanto es como estar en una "maquina virtual" entonces procedemos a instalar rails:
+
+```bash
+  gem install rails
+```
+
+Luego de instalar rails nos vamos a "/usr/src/app"
+
+```bash
+  cd /usr/src/app
+```
+
+Creamos un proyecto nuevo de rails recordemos que con los flags --api y --database= escogemos si queremos una API solamente y tambien la base de datos con el cual el Active Record de conectara en este caso uso Postgresql
+
+```bash
+  rails new my-api-name --api --database=postgresql
+```
+
+Ya creado el proyecto en el contenedor procedemos a salir y nos percatamos que tambien tenemos el proyecto y sus respectivos archivos en nuestra carpeta.
+
+```bash
+  exit
+```
+
+Ahora debemos dar permisos a nuestro directorio para ello vamos al directorio en si:
+
+```bash
+  cd my-api-name
+  sudo chown -R $USER:$USER .
+```
+
