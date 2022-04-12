@@ -29,30 +29,30 @@ echo \
 
 Actualizamos los repositorios.
 ```bash
-sudo apt update
+  sudo apt update
 ```
 
 Instalamos los paquetes.
 ```bash
-sudo apt install docker-ce docker-ce-cli containerd.io
+  sudo apt install docker-ce docker-ce-cli containerd.io
 ```
 ## Instalar Docker-compose
 
 Descargamos el archivo binario.
 ```bash
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
 Se le da permisos a la descarga.
 ```bash
-sudo chmod +x /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
 ```
 Ahora se debe verificar la instalacion:
 
 ```bash
-docker --version
+  docker --version
 ```
 
 ```bash
-docker-compose --version
+  docker-compose --version
 ```
